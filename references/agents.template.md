@@ -52,4 +52,4 @@
 ## Связка с Project Tracker Repo
 - Если репозиторий уже бутстрапнут и нужен следующий bootstrap, upgrade или rollout project-level процесса, использовать standalone-репозиторий `project-tracker`: `https://github.com/ai-meatbags/project-tracker-skill.git`
 - Не вести эволюцию bootstrap-процесса локальными правками по месту в каждом проекте, иначе проекты быстро расходятся по process contract.
-- Это правило не отменяет `task-tracker`: повседневное выполнение задач внутри бутстрапнутого репозитория должно идти через `task-tracker`.
+- Повседневное выполнение задач внутри бутстрапнутого репозитория должно идти через standalone-репозиторий `task-tracker`: `https://github.com/ai-meatbags/task-tracker-skill.git`

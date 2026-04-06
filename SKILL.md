@@ -240,8 +240,8 @@ For `local+linear`:
 ## Handoff
 
 After bootstrap or upgrade:
-- repo-level bootstrap/upgrade changes and process rollouts should continue through the standalone `project-tracker` repository: [ai-meatbags/project-tracker-skill](https://github.com/ai-meatbags/project-tracker-skill)
-- daily task execution inside the bootstrapped repository should route to `task-tracker`
+- future bootstrap/upgrade changes and process rollouts should continue through `project-tracker`
+- daily task execution inside the bootstrapped repository should route to the standalone `task-tracker` repository: [ai-meatbags/task-tracker-skill](https://github.com/ai-meatbags/task-tracker-skill)
 
 For implementation handoff, route the user to `task-tracker`:
 - `task tracker help`

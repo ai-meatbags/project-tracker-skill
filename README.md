@@ -39,11 +39,12 @@ Use `project-tracker` when you need to:
 
 Do not use it for normal feature execution inside an already bootstrapped repository. This repository owns process setup and process upgrades.
 
-## Workflow Boundary
+## Companion Workflow
 
-After a repository is bootstrapped, repository-level process work should continue through this repository:
+After a repository is bootstrapped, the workflow splits into two tracks:
 
-- [ai-meatbags/project-tracker-skill](https://github.com/ai-meatbags/project-tracker-skill)
+- this repository continues to own bootstrap, upgrade, and process rollout
+- day-to-day task execution should continue through [ai-meatbags/task-tracker-skill](https://github.com/ai-meatbags/task-tracker-skill)
 
 That includes:
 
@@ -52,7 +53,7 @@ That includes:
 - policy and template evolution
 - cross-repository rollout of process changes
 
-This boundary matters. If process logic starts being patched independently inside each target repository, the workflow drifts and upgrades stop being reliable.
+This boundary matters. If setup logic and execution logic are mixed together, the process becomes harder to upgrade and much easier to drift.
 
 ## How It Works
 
