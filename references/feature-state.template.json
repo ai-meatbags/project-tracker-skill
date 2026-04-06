@@ -1,0 +1,14 @@
+{
+  "feature_key": "",
+  "stage": "context",
+  "feature_owner": "",
+  "feature_anchor_issue": {
+    "id": "",
+    "identifier": "",
+    "url": ""
+  },
+  "required_task_keys": [],
+  "child_task_keys": [],
+  "integration_task_key": "",
+  "last_updated_at": ""
+}

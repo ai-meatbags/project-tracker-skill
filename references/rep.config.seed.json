@@ -1,0 +1,114 @@
+{
+  "version": "2.0.0",
+  "flow_version": "2026-03-agent-process-v1",
+  "task_prefix": "__TASK_PREFIX__",
+  "task_sync": {
+    "mode": "local+linear",
+    "linear": {
+      "team_from_task_prefix": true,
+      "feature_anchor_required_for_feature_path": true,
+      "fallback_to_nearest_status_by_meaning": true,
+      "status_mapping": {
+        "todo": "Todo",
+        "in_progress": "In Progress",
+        "testing": "In Review",
+        "need_changes": "In Progress",
+        "need_retro": "In Review",
+        "blocked": "In Progress",
+        "done.completed": "Done",
+        "done.cancelled": "Canceled",
+        "done.superseded": "Canceled",
+        "done.duplicate": "Canceled"
+      }
+    }
+  },
+  "paths": {
+    "tasks_root": "tasks",
+    "policies_dir": "tasks/_policies",
+    "inbox_dir": "tasks/_inbox",
+    "templates_dir": "tasks/_templates",
+    "arch_file": "tasks/_policies/arch-patterns.md",
+    "dev_plan_file": "tasks/_policies/dev-plan.md",
+    "project_patterns_file": "tasks/_policies/project-patterns.md",
+    "retro_inbox_file": "tasks/_inbox/retro-inbox.md",
+    "feature_template_file": "tasks/_templates/feature.template.md",
+    "feature_state_template_file": "tasks/_templates/feature-state.template.json",
+    "task_state_template_file": "tasks/_templates/task-state.template.json",
+    "task_testing_template_file": "tasks/_templates/task-testing.template.md",
+    "task_retro_template_file": "tasks/_templates/task-retro.template.md",
+    "feature_retro_template_file": "tasks/_templates/feature-retro.template.md"
+  },
+  "naming": {
+    "feature_dir_pattern": "{feature_key}",
+    "feature_dossier_file_pattern": "{feature_key}.feature.md",
+    "feature_state_file_pattern": "{feature_key}.state.json",
+    "feature_retro_file_pattern": "{feature_key}.retro.md",
+    "task_file_pattern": "{task_prefix}-{n}.{slug}.md",
+    "task_state_file_suffix": ".state.json",
+    "task_testing_file_suffix": ".testing.md",
+    "task_retro_file_suffix": ".retro.md"
+  },
+  "status_model": {
+    "feature_flow": [
+      "context",
+      "spec",
+      "plan",
+      "tasks",
+      "implement",
+      "feature_retro",
+      "finish"
+    ],
+    "task_statuses": [
+      "todo",
+      "in_progress",
+      "testing",
+      "need_changes",
+      "need_retro",
+      "blocked",
+      "done"
+    ],
+    "resolutions": [
+      "completed",
+      "cancelled",
+      "superseded",
+      "duplicate"
+    ]
+  },
+  "quality": {
+    "reviewer_policy_by_risk_tier": {
+      "low": {
+        "reviewer_required": false
+      },
+      "medium": {
+        "reviewer_required": true
+      },
+      "high": {
+        "reviewer_required": true
+      }
+    },
+    "default_check_sources": [
+      "feature_or_task_specific",
+      "rep_config_defaults",
+      "project_patterns"
+    ]
+  },
+  "scope": {
+    "task_in_feature_scope": "feature",
+    "task_in_root_scope": "project_root_without_features"
+  },
+  "governance": {
+    "upstream_managed_files": [
+      "tasks/_policies/arch-patterns.md",
+      "tasks/_policies/dev-plan.md",
+      "tasks/_templates/feature.template.md",
+      "tasks/_templates/feature-state.template.json",
+      "tasks/_templates/task-state.template.json",
+      "tasks/_templates/task-testing.template.md",
+      "tasks/_templates/task-retro.template.md",
+      "tasks/_templates/feature-retro.template.md"
+    ],
+    "local_technical_rules_file": "tasks/_policies/project-patterns.md",
+    "feature_state_authoritative": true,
+    "task_state_authoritative": true
+  }
+}

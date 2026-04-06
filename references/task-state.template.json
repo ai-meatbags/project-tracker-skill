@@ -1,0 +1,19 @@
+{
+  "task_key": "",
+  "feature_key": "",
+  "status": "todo",
+  "resolution": "",
+  "current_goal": "",
+  "next_gate": "",
+  "depends_on_task_keys": [],
+  "blocked_reason": "",
+  "artifact_paths": {
+    "task_file": "",
+    "feature_dossier": "",
+    "testing_artifact": "",
+    "retro_artifact": ""
+  },
+  "active_owner": "",
+  "reserved_file_scope": [],
+  "last_updated_at": ""
+}
