@@ -48,3 +48,8 @@
 
 ## Правило маршрутизации реализации
 - Если пользователь просит реализовать план (`implement plan`) и доступен скилл `task-tracker`, выполнение должно идти через процесс `task-tracker`.
+
+## Связка с Project Tracker Repo
+- Если репозиторий уже бутстрапнут и нужен следующий bootstrap, upgrade или rollout project-level процесса, использовать standalone-репозиторий `project-tracker`: `https://github.com/ai-meatbags/project-tracker-skill.git`
+- Не вести эволюцию bootstrap-процесса локальными правками по месту в каждом проекте, иначе проекты быстро расходятся по process contract.
+- Это правило не отменяет `task-tracker`: повседневное выполнение задач внутри бутстрапнутого репозитория должно идти через `task-tracker`.
