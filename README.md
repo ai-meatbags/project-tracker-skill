@@ -98,14 +98,3 @@ If `--project-root` is omitted, the current directory is used.
 Bootstrap creates missing project-level artifacts.
 
 Upgrade reviews the current repository state and applies managed updates where it is safe to do so. Existing repository-specific content is preserved when the contract says it should be preserved.
-
-## Intended Outcome
-
-The goal is not "more templates." The goal is a repository that is easier to operate:
-
-- clearer project rules
-- less setup ambiguity
-- safer upgrades
-- lower process drift over time
-
-If you maintain multiple repositories and want them to evolve under one process contract, this is the layer that should own that responsibility.
