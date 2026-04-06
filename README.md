@@ -1,50 +1,77 @@
-# project-tracker
+# Project Tracker
 
-Standalone distribution repository for the `project-tracker` skill.
+Bootstrap and upgrade a repository's delivery process without hand-assembling the same project scaffolding every time.
 
-Repository: [ai-meatbags/project-tracker-skill](https://github.com/ai-meatbags/project-tracker-skill)
+`project-tracker` sets up the project-level artifacts that make execution predictable: config, policies, templates, and upgrade rules. It is meant for repository setup and process evolution, not day-to-day feature delivery.
 
-## What It Does
+## Why This Exists
 
-`project-tracker` bootstraps and upgrades project-level process artifacts:
+Most teams do not fail because they cannot write code. They fail because every new repository starts with a vague process, inconsistent templates, and undocumented decisions about how work should move.
+
+`project-tracker` solves that by turning repository setup into a repeatable operation:
+
+- bootstrap a new repository with one process contract
+- upgrade an existing repository when the process evolves
+- keep project-level artifacts consistent across repositories
+- reduce drift between "how this repo should work" and "what is actually in the repo"
+
+## What It Creates
+
+When you bootstrap a repository, `project-tracker` prepares a project-owned process layer, including:
 
 - `rep.config.json`
-- `tasks/_policies/*`
-- `tasks/_templates/*`
+- `tasks/_policies/arch-patterns.md`
+- `tasks/_policies/dev-plan.md`
+- `tasks/_policies/project-patterns.md`
 - `tasks/_inbox/retro-inbox.md`
+- `tasks/_templates/*`
 - managed sections in `AGENTS.md`
 
-It prepares a repository so downstream execution can run from project-local artifacts instead of ad hoc prompts.
+The result is a repository that can run from explicit local artifacts instead of ad hoc instructions.
 
-## Lifecycle Linkage
+## When To Use It
 
-After a repository is bootstrapped:
+Use `project-tracker` when you need to:
 
-- further bootstrap and upgrade work should go through [ai-meatbags/project-tracker-skill](https://github.com/ai-meatbags/project-tracker-skill)
-- feature and task execution inside the bootstrapped repository should continue through `task-tracker`
+- initialize a new repository's working process
+- upgrade an existing repository to the current process contract
+- roll out project-level template or policy changes across repositories
 
-This split matters. Mixing bootstrap governance with day-to-day execution in the target repo makes process drift much more likely.
+Do not use it for normal feature execution inside an already bootstrapped repository. This repository owns process setup and process upgrades.
 
-## Source Of Truth
+## Workflow Boundary
 
-Canonical source of truth lives in:
+After a repository is bootstrapped, repository-level process work should continue through this repository:
 
-- `.agent/skills/project-tracker` inside the `meatbags` repository
+- [ai-meatbags/project-tracker-skill](https://github.com/ai-meatbags/project-tracker-skill)
 
-Publishing flow:
+That includes:
 
-1. Update `.agent/skills/project-tracker`
-2. Sync the same contents to this standalone repository
+- bootstrap improvements
+- upgrade logic
+- policy and template evolution
+- cross-repository rollout of process changes
+
+This boundary matters. If process logic starts being patched independently inside each target repository, the workflow drifts and upgrades stop being reliable.
+
+## How It Works
+
+`project-tracker` combines two layers:
+
+- `SKILL.md` defines the operating contract, decision rules, and upgrade behavior
+- `scripts/bootstrap_project.js` performs deterministic file materialization
+
+The script is intentionally narrow. It writes known artifacts. It does not own repository-specific reasoning, manual follow-up decisions, or upgrade planning.
 
 ## Repository Layout
 
 - `SKILL.md` — skill contract and operating rules
-- `scripts/bootstrap_project.js` — deterministic materialization helper
-- `references/` — seeds and templates copied into target repositories
+- `scripts/bootstrap_project.js` — deterministic bootstrap and upgrade helper
+- `references/` — templates and seed files copied into target repositories
 
-## Usage
+## Quick Start
 
-From the standalone repository root:
+Dry run:
 
 ```bash
 node scripts/bootstrap_project.js \
@@ -53,7 +80,7 @@ node scripts/bootstrap_project.js \
   --project-root /path/to/project
 ```
 
-Apply writes explicitly:
+Apply changes:
 
 ```bash
 node scripts/bootstrap_project.js \
@@ -62,3 +89,22 @@ node scripts/bootstrap_project.js \
   --project-root /path/to/project \
   --apply
 ```
+
+If `--project-root` is omitted, the current directory is used.
+
+## Output Model
+
+Bootstrap creates missing project-level artifacts.
+
+Upgrade reviews the current repository state and applies managed updates where it is safe to do so. Existing repository-specific content is preserved when the contract says it should be preserved.
+
+## Intended Outcome
+
+The goal is not "more templates." The goal is a repository that is easier to operate:
+
+- clearer project rules
+- less setup ambiguity
+- safer upgrades
+- lower process drift over time
+
+If you maintain multiple repositories and want them to evolve under one process contract, this is the layer that should own that responsibility.
