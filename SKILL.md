@@ -1,6 +1,9 @@
 ---
 name: project-tracker
 description: >-
+  OBSOLETED. This legacy skill repository is kept as an archive; use
+  ai-meatbags/arch-rules, VanDalkvist/arch-rules-skills, and
+  VanDalkvist/arch-improvement-skills for new architecture-rule and arch-loop work.
   Bootstrap project process files when user asks "new project", "новый проект",
   "инициализируй проект", "project bootstrap", "bootstrap project", "го проект",
   "бахни проект", "upgrade project", or "апгрейд проекта". Creates missing
@@ -10,6 +13,15 @@ description: >-
 ---
 
 # Project Tracker
+
+> [!IMPORTANT]
+> Статус: `obsoleted`. Репозиторий сохранен как архив старого project/task tracker flow.
+> Актуальная архитектурная поверхность:
+> - [ai-meatbags/arch-rules](https://github.com/ai-meatbags/arch-rules) — baseline архитектурных правил.
+> - [VanDalkvist/arch-rules-skills](https://github.com/VanDalkvist/arch-rules-skills) — skills для применения архитектурных правил в планировании и review.
+> - [VanDalkvist/arch-improvement-skills](https://github.com/VanDalkvist/arch-improvement-skills) — skills для arch loop / review-fix-verify cycles.
+>
+> Поддержка этого репозитория прекращена. Новые process changes должны идти через репозитории выше.
 
 ## Purpose
 
